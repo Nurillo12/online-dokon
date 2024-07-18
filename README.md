@@ -15,7 +15,7 @@ Biz front-end qismimizni back-enddan turib ko'tardik, va bu uchun biz ejs kutubx
 
     npm install ejs
 
-Ejs ni ham sozlab olishimiz kerak, bu uchun esa .htnl formatdagi fayllarni .ejs formatga olib o'tamiz va asosiy back-end faylimizga quyidagi kodlarni yozib qo'yishimiz kerak:
+Ejs ni ham sozlab olishimiz kerak, bu uchun esa .html formatdagi fayllarni .ejs formatga olib o'tamiz va asosiy back-end faylimizga quyidagi kodlarni yozib qo'yishimiz kerak:
 
     app.set('view engine', 'ejs')
 
