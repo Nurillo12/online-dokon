@@ -12,24 +12,23 @@ const PORT = process.env.PORT
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
-  res.render('index', {
-    title: 'Home Page',
-    sarlavha: 'Main Page'
-  })
+
 })
 
 
 app.get('/about', (req, res) => {
   res.render('about', {
     title: 'About Page',
-    sarlavha: 'About Page'
+    sarlavha: 'About Page',
+    path: '/about'
   })
 })
 
 app.get('/contact', (req, res) => {
   res.render('contact', {
     title: 'Contact Page',
-    sarlavha: 'Contact Page'
+    sarlavha: 'Contact Page',
+    path: '/contact'
   })
 })
 
