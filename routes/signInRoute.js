@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {getSignInPage, postSignInPage} = require('../controllers/signInControllers')
-
+const {getSignInPage, postSignInPage} =require('../controllers/signInController')
 
 router.get('/', getSignInPage)
 router.post('/', postSignInPage)

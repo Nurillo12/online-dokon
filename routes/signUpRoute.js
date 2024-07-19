@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {getSignUpPage, postSignUpPage} = require('../controllers/signUpControllers')
+const {getSignUpPage, postSignUpPage} = require('../controllers/signUpController')
 
 
 router.get('/', getSignUpPage)
