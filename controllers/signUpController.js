@@ -1,5 +1,9 @@
+const {userModel} = require('../userblogdb/userdb')
 const path = require('path')
 const fs = require('fs').promises
+const { v4: uuidv4 } = require('uuid');
+const {generateHash} = require('../crypt')
+
 
 const getSignUpPage = async(req, res) => {
   res.render('signup', {
@@ -11,7 +15,7 @@ const getSignUpPage = async(req, res) => {
 }
 
 const postSignUpPage = async(req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
 try {
   const {email, password} = req.body
 
@@ -19,16 +23,8 @@ try {
     throw new Error("Ma'lumot to'ldirilmagan")
   }
 
-  const getUsers = await fs.readFile(path.join(__dirname, '../', 'blogdb', 'db.json'), 'utf-8')
- 
- let allusers = JSON.parse(getUsers)
-//  console.log(allusers);
-
-
-// console.log(getUsers);
-  let findUser = await allusers.find(user => user.email == email)
-// console.log(getUsers);
-
+// Mongodb database
+let findUser = await userModel.findOne({email: email})
 
   if(findUser) {
     throw new Error('Bu email allaqachon mavjud!') 
@@ -37,17 +33,17 @@ try {
     throw new Error('Parol uchun belgilar soni 8 tadan oshishi kerak!')
   }
   
+// console.log(uuidv4);
+
 const user = {
+  user_id: uuidv4(),
   email: email,
-  password: password
+  password: await generateHash(password)
 }
 
-allusers.push(user)
-allusers = JSON.stringify(allusers)
+await userModel.create(user)
+res.redirect('/signin')
 
-await fs.writeFile(path.join(__dirname, '../', 'blogdb', 'db.json'), allusers, 'utf-8')
-
-  res.redirect('/signin')
 } catch (error) {
   res.render('signup', {
     title: 'Sign Up Page',
