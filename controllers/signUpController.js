@@ -17,13 +17,19 @@ const getSignUpPage = async(req, res) => {
 const postSignUpPage = async(req, res) => {
   console.log(req.body);
 try {
-  const {email, password} = req.body
+  const {username, email, password} = req.body
 
-  if(!(email && password)) {
+  if(!(email && password && username)) {
     throw new Error("Ma'lumot to'ldirilmagan")
   }
 
 // Mongodb database
+let findUsername = await userModel.findOne({username: username})
+
+if(findUsername) {
+  throw new Error('Bu username allaqachon mavjud!')
+}
+
 let findUser = await userModel.findOne({email: email})
 
   if(findUser) {
@@ -37,6 +43,7 @@ let findUser = await userModel.findOne({email: email})
 
 const user = {
   user_id: uuidv4(),
+  username: username,
   email: email,
   password: await generateHash(password)
 }

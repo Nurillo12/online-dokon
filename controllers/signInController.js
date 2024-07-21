@@ -2,7 +2,7 @@ const {userModel} = require('../userblogdb/userdb')
 const path = require('path')
 const fs = require('fs').promises
 const {confirmHash} = require('../crypt')
-
+const {generateToken} = require('../modules/jwt')
 const getSignInPage = async(req, res) => {
   res.render('signin', {
     title: 'Sign In Page',
@@ -31,9 +31,12 @@ try {
     if(confirmHashPassword == false) {
       throw new Error("Parol xato kiritildi! ")
     }
-   
-
-    res.redirect('/')
+   const token = generateToken(findByEmail.user_id)
+   console.log(token);
+    // res.cookie('name', 'Steven').redirect('/')
+    // res.redirect('/')
+    res.cookie('token', token).redirect('/')
+    
 } catch (error) {
   res.render('signin', {
     title: 'Sign In Page',

@@ -2,15 +2,24 @@ const express = require('express')
 const app = express()
 const ejs = require('ejs')
 const path = require('path')
+const {connectDB, userModel} = require('./userblogdb/userdb')
+
 const homeRoute = require('./routes/homeRoute')
 const aboutRoute = require('./routes/aboutRoute')
 const contactRoute = require('./routes/contactRoute')
 const signInRoute = require('./routes/signInRoute')
 const signUpRoute = require('./routes/signUpRoute')
+const cookieParser = require('cookie-parser')
 const {notFound} = require('./controllers/notFoundController')
+const {checkAuth} = require('./modules/auth')
 // const notFoundRoute = require('./routes/notFoundRoute')
 require('dotenv').config()
 
+// connection database
+connectDB()
+
+app.use(cookieParser())
+app.use(checkAuth)
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
@@ -19,6 +28,7 @@ const PORT = process.env.PORT
 
 // ejs Set
 app.set('view engine', 'ejs')
+
 
 app.use(homeRoute.path, homeRoute.router)
 app.use(aboutRoute.path, aboutRoute.router)
