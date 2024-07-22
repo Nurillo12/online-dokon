@@ -10,6 +10,7 @@ const getSignUpPage = async(req, res) => {
     title: 'Sign Up Page',
     sarlavha: 'Registration',
     path: '/signup',
+    username: req?.user?.username,
     error: ""
   })
 }
@@ -56,11 +57,12 @@ res.redirect('/signin')
     title: 'Sign Up Page',
     sarlavha: 'Registration',
     path: '/signup',
-    error: error
+    username: req?.user?.username,
+    error: error+""
   })
 }
 
- 
+
 }
 
 module.exports = {

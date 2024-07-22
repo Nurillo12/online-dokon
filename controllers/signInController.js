@@ -8,6 +8,7 @@ const getSignInPage = async(req, res) => {
     title: 'Sign In Page',
     sarlavha: 'Login',
     path: '/signin',
+    username: req?.user?.username,
     error: ""
   })
  
@@ -42,6 +43,7 @@ try {
     title: 'Sign In Page',
     sarlavha: 'Login',
     path: '/signin',
+    username: req?.user?.username,
     error: error
   })
 }

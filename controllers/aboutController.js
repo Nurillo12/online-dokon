@@ -2,7 +2,9 @@ const getAboutPage = async(req, res) => {
   res.render('about', {
     title: 'About Page',
     sarlavha: 'About Page',
-    path: '/about'
+    username: req?.user?.username,
+    path: '/about',
+    error: ""
   })
 }
 
