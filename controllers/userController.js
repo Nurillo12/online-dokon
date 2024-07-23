@@ -1,12 +1,13 @@
 const getProfilePage = async(req, res) => {
-  console.log(req.cookies.token);
-  res.render('profile', {
-    title: 'Profile Page',
-    sarlavha: 'Profile Page',
-    path: '/profile',
-    username: req?.user?.username,
-    error: ""
-  })
+  if(req?.cookies.token) {
+    res.render('profile', {
+      title: 'About Page',
+      sarlavha: 'About Page',
+      username: req?.user?.username,
+      path: '/profile',
+      error: ""
+    })
+  }
 }
 
 module.exports = {

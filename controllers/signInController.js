@@ -36,7 +36,7 @@ try {
    console.log(token);
     // res.cookie('name', 'Steven').redirect('/')
     // res.redirect('/')
-    res.cookie('token', token).redirect('/')
+    res.cookie('token', token).redirect('/profile')
     
 } catch (error) {
   res.render('signin', {
@@ -44,7 +44,7 @@ try {
     sarlavha: 'Login',
     path: '/signin',
     username: req?.user?.username,
-    error: error
+    error: error+""
   })
 }
 

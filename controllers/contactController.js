@@ -1,11 +1,13 @@
 const getContactPage = async(req, res) => {
-  res.render('contact', {
-    title: 'Contact Page',
-    sarlavha: 'Contact Page',
-    username: req?.user?.username,
-    path: '/contact',
-    error: ""
-  })
+  if(req?.cookies.token) {
+    res.render('contact', {
+      title: 'About Page',
+      sarlavha: 'About Page',
+      username: req?.user?.username,
+      path: '/contact',
+      error: ""
+    })
+  }
 }
 
 module.exports = {

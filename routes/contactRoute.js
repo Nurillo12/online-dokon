@@ -1,16 +1,11 @@
-const express = require('express')
-const router = express.Router()
-const {getContactPage} = require('../controllers/contactController')
+const express = require('express');
+const router = express.Router();
+const { getAboutPage } = require('../controllers/aboutController');
+const { protectRoute } = require('../modules/middleware');
 
-router.get('/', getContactPage)
-
-/* router.get('/info', (req, res) => {
-  res.send("Ma'lumotlar sahifasiga xush kelibsiz!!!")
-}) */
+router.get('/', protectRoute, getAboutPage);
 
 module.exports = {
-  path: '/contact',
-  router: router
-}
-
-// /about/info
+    path: '/about',
+    router: router,
+};
