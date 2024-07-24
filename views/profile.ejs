@@ -1,5 +1,40 @@
 <%- include('layouts/header') %>
 <%- include('layouts/navbar') %>
-<h1 class="text-center"> Xush kelibsiz! <%=username?username:"Mehmon"  %>! </h1>
+
+
+<h1 class="text-center mb-4">  <%=username?username:"Mehmon"  %>! </h1>
+  <div class="container mt-5">
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center ">
+  
+  <% if(posts) { %>
+    
+   <% for(let post of posts) { %>
+    <div class="col">
+      <div class="card shadow-sm">
+      <img src=" <%=post.rasm  %> " > 
+        <div class="card-body">
+          <p class="card-text fw-bold"> <%=post.tavsif  %> </p>
+          <div class="d-flex justify-content-end align-items-center">
+            <small class="text-muted"> <%=post.narx  %>.00$ </small>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-primary">Detail</button>
+            <button type="button" class="btn btn-outline-secondary">Edit</button>
+            <button type="button" class="btn btn-outline-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+  
+    <% } %>
+    <%} else { %>
+  <h1>Sizda  hozircha mahsulot yo'q</h1>
+      <% } %>
+
+    </div>
+</div>
 
 <%- include('layouts/footer') %>

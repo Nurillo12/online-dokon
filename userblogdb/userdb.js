@@ -30,9 +30,35 @@ const userSchema = new mongoose.Schema({
   }
 })
 
+const postSchema = new mongoose.Schema({
+  mahsulot: {
+    type: String,
+    required: true
+  },
+
+  tavsif : {
+    type: String,
+    required: true
+  },
+
+  rasm: {
+    type: String,
+    required: true
+  },
+
+  narx: {
+    type: Number,
+    required: true
+  }
+},
+{timestamps: true}
+)
+
 const userModel = mongoose.model('users', userSchema)
+const postModel = mongoose.model('mahsulotlar', postSchema)
 
 module.exports = {
   connectDB,
-  userModel
+  userModel,
+  postModel
 }
