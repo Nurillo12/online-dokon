@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const {getHomePage} = require('../controllers/homeController')
+const {getAddPost, postAddMethod} = require('../controllers/addPostController')
 
-router.get('/', getHomePage)
+router.get('/', getAddPost)
+router.post('/', postAddMethod)
 
 module.exports = {
-  path: '/',
+  path: '/addpost',
   router: router
 }
