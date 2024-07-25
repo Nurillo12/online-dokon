@@ -27,7 +27,9 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+
+  user_posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'mahsulotlar'}]
 })
 
 const postSchema = new mongoose.Schema({
@@ -36,7 +38,7 @@ const postSchema = new mongoose.Schema({
     required: true
   },
 
-  tavsif : {
+  tavsif: {
     type: String,
     required: true
   },
