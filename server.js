@@ -12,6 +12,7 @@ const profileRoute = require('./routes/profileRoute')
 const logOutRoute = require('./routes/logOutRoute')
 const addPostRoute = require('./routes/addPostRoute')
 const deletePostRoute = require('./routes/deletePostRoute')
+const editRoute = require('./routes/editRoute')
 const cookieParser = require('cookie-parser')
 const {notFound} = require('./controllers/notFoundController')
 const {checkAuth} = require('./modules/auth')
@@ -41,6 +42,9 @@ app.use(profileRoute.path, profileRoute.router)
 app.use(logOutRoute.path, logOutRoute.router)
 app.use(addPostRoute.path, addPostRoute.router)
 app.use(deletePostRoute.path, deletePostRoute.router)
+app.use(editRoute.path, editRoute.router)
+
+// 404 Not Found Page
 app.use(notFound)
 
 app.listen(PORT, () => {

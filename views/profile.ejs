@@ -28,8 +28,8 @@
             <form action="/detail" method="post">
             <button type="submit" class="btn btn-outline-primary"> <a class="text-decoration-none text-dark"  href="#">Detail</a> </button>  </form>
 
-            <form action="/edit" method="post">
-            <button type="submit" class="btn btn-outline-secondary">Edit</button> </form>
+            <form action="/edit/<%=post._id  %>" >
+              <button type="submit" class="btn btn-outline-secondary">Edit</button> </form>
 
             <form action="/delete/<%=post._id  %>" method="post">
               <button type="submit" class="btn btn-outline-danger" >Delete</button>
