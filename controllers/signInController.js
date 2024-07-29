@@ -15,12 +15,12 @@ const getSignInPage = async(req, res) => {
 }
 
 const postSignInPage = async(req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
 try {
 
   const {email, password} = req.body
   if(!(email && password)) {
-    throw new Error("Ma'lumot to'ldirilmadi")
+    throw new Error("Ma'lumot to'ldirilmadi!")
   }
   let findByEmail = await userModel.findOne({email: email})
     if(!findByEmail) {
@@ -33,7 +33,7 @@ try {
       throw new Error("Parol xato kiritildi! ")
     }
    const token = generateToken(findByEmail.user_id)
-   console.log(token);
+  //  console.log(token);
     // res.cookie('name', 'Steven').redirect('/')
     // res.redirect('/')
     res.cookie('token', token).redirect('/profile')

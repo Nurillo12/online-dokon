@@ -16,7 +16,7 @@ const getSignUpPage = async(req, res) => {
 }
 
 const postSignUpPage = async(req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 try {
   const {username, email, password} = req.body
 
